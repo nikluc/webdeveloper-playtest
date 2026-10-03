@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WebDeveloper Playtest</title>
+<meta name="description" content="Early playtest build of WebDeveloper: you are a spider. Build webs by day, get your spiderlings out by night.">
+<style>
+  :root {
+    --bg: #f4f1e8;
+    --panel: #ffffff;
+    --ink: #1f2a24;
+    --muted: #5b675f;
+    --line: #dcd6c6;
+    --accent: #2f6f4e;
+    --accent-ink: #ffffff;
+    --silk: #3d7fb3;
+    --key-bg: #efeadc;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #121815;
+      --panel: #1b2420;
+      --ink: #e8efe9;
+      --muted: #a3b2a8;
+      --line: #2e3a34;
+      --accent: #6cc495;
+      --accent-ink: #0d1a13;
+      --silk: #96d7ff;
+      --key-bg: #26322c;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #121815; --panel: #1b2420; --ink: #e8efe9; --muted: #a3b2a8;
+    --line: #2e3a34; --accent: #6cc495; --accent-ink: #0d1a13; --silk: #96d7ff; --key-bg: #26322c;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  main { max-width: 760px; margin: 0 auto; padding: 40px 16px 64px; }
+  h1 { font-size: 2.1rem; line-height: 1.15; margin: 0 0 6px; letter-spacing: -0.01em; }
+  .tag { color: var(--muted); margin: 0 0 28px; }
+  h2 { font-size: 1.15rem; margin: 36px 0 10px; }
+  p { margin: 0 0 12px; }
+  .actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 8px 0 8px; }
+  .btn {
+    display: inline-block; padding: 14px 22px; border-radius: 10px; font-weight: 650;
+    text-decoration: none; border: 2px solid var(--accent);
+  }
+  .btn.primary { background: var(--accent); color: var(--accent-ink); }
+  .btn.secondary { color: var(--accent); background: transparent; }
+  .btn:focus-visible { outline: 3px solid var(--silk); outline-offset: 2px; }
+  .note { color: var(--muted); font-size: 0.92rem; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; }
+  ol.loop { margin: 0; padding-left: 22px; }
+  ol.loop li { margin: 0 0 8px; }
+  table { width: 100%; border-collapse: collapse; }
+  td { padding: 8px 6px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  td:first-child { width: 38%; white-space: nowrap; }
+  kbd {
+    display: inline-block; min-width: 1.6em; padding: 1px 7px; border-radius: 6px; text-align: center;
+    background: var(--key-bg); border: 1px solid var(--line); font: 600 0.88rem/1.5 ui-monospace, Consolas, monospace;
+  }
+  ul.tips { margin: 0; padding-left: 20px; }
+  ul.tips li { margin: 0 0 6px; }
+  footer { margin-top: 40px; color: var(--muted); font-size: 0.85rem; }
+  @media (max-width: 520px) {
+    h1 { font-size: 1.7rem; }
+    td:first-child { white-space: normal; width: 42%; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <h1>WebDeveloper</h1>
+  <p class="tag">You are a spider. Hunt and build your webs by day, then get your spiderlings safely out by night.<br>
+  This is an <strong>early playtest</strong>: rough edges and placeholder art are expected.</p>
+
+  <div class="actions">
+    <a class="btn primary" href="play/">Play in browser</a>
+  </div>
+  <p class="note">Needs a desktop or laptop with keyboard and mouse, in Chrome, Edge or Firefox. The first load takes a little while. Click the game once to give it focus.</p>
+
+  <h2>What we want you to try</h2>
+  <div class="card">
+    <p>Play <strong>one full day and one night</strong> (about 10 minutes), then tell us how it felt.</p>
+    <ol class="loop">
+      <li><strong>Build your Nest.</strong> Press <kbd>B</kbd>, then <kbd>2</kbd>, click the three highlighted pebbles near where you start, and press <kbd>Enter</kbd>. An egg sac appears inside.</li>
+      <li><strong>Feed the egg sac.</strong> Build webs (<kbd>B</kbd>, <kbd>1</kbd>, click 3+ anchor spots, <kbd>Enter</kbd>), wrap the flies they catch, carry the food home and drop it in the Nest. The more it eats, the more spiderlings hatch tonight.</li>
+      <li><strong>At midday</strong> a pale dashed trail appears: tonight your spiderlings will walk it to a tall plant. Webs built across it will help protect them.</li>
+      <li><strong>At night</strong> the spiderlings walk the glowing trail. Angry flies try to snatch them and beetles block the way. Chase them off and rescue the little ones.</li>
+      <li><strong>At dawn</strong> you see how many made it out. Escaped spiderlings give you XP.</li>
+    </ol>
+  </div>
+
+  <h2>Controls</h2>
+  <div class="card">
+    <table>
+      <tr><td><kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd></td><td>Move</td></tr>
+      <tr><td><kbd>Shift</kbd> (hold)</td><td>Sprint (uses energy)</td></tr>
+      <tr><td><kbd>Space</kbd></td><td>Lunge: catch flies, hit enemies, make a fly drop what it carries</td></tr>
+      <tr><td>Right mouse</td><td>Silk shot toward the mouse: snares flies, slows enemies</td></tr>
+      <tr><td><kbd>E</kbd></td><td>Interact: wrap a catch, pick up, drop food in the Nest, carry a spiderling. Hold <kbd>E</kbd> when there are several choices to open a menu</td></tr>
+      <tr><td><kbd>B</kbd></td><td>Build mode on/off</td></tr>
+      <tr><td><kbd>1</kbd> / <kbd>2</kbd> (build mode)</td><td>Hunting web / Nest</td></tr>
+      <tr><td>Left / right mouse (build mode)</td><td>Place / remove an anchor</td></tr>
+      <tr><td><kbd>Enter</kbd> (build mode)</td><td>Build it: your spider weaves the web</td></tr>
+      <tr><td><kbd>Tab</kbd> (at the Nest)</td><td>Upgrades</td></tr>
+      <tr><td><kbd>Esc</kbd></td><td>Cancel / pause</td></tr>
+    </table>
+  </div>
+
+  <h2>Good to know</h2>
+  <ul class="tips">
+    <li>Webs need anchor spots: rocks, trees and tall grass.</li>
+    <li>Building and repairing cost silk. Eating food gives silk back.</li>
+    <li>If the food count turns red, the egg sac is starving: bring food home.</li>
+    <li>Press <kbd>F1</kbd> in the game to see the instructions again.</li>
+    <li>Your progress is not saved yet. Closing the tab starts a new garden.</li>
+  </ul>
+
+  <div class="actions" style="margin-top:28px">
+    <a class="btn primary" href="play/">Play in browser</a>
+  </div>
+
+  <footer>Build 06e5b5a · 2026-10-03 · Made with Godot · Thank you for playing!</footer>
+</main>
+</body>
+</html>
